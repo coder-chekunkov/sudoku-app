@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Судоку</string>
+    <string name="titleHistoryButton">История</string>
+    <string name="titleStatisticButton">Статистика</string>
+    <string name="titleGameButton">Играть</string>
+
+    <string name="titleToolbarHistory">История</string>
+    <string name="titleToolbarGame">Игра</string>
+    <string name="titleToolbarStatistic">Статистика</string>
+</resources>
