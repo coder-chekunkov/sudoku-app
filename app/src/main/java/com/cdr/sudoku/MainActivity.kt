@@ -12,6 +12,7 @@ import com.cdr.sudoku.contract.Navigator
 import com.cdr.sudoku.databinding.ActivityMainBinding
 import com.cdr.sudoku.game.GameFragment
 import com.cdr.sudoku.game.LaunchGameFragment
+import com.cdr.sudoku.game.ResultFragment
 import com.cdr.sudoku.history.HistoryFragment
 import com.cdr.sudoku.statistic.StatisticFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -75,6 +76,8 @@ class MainActivity : AppCompatActivity(), Navigator {
     override fun showLaunchGameFragment() = launchFragment(LaunchGameFragment())
     override fun showStatisticFragment() = launchFragment(StatisticFragment())
     override fun showGameFragment(diff: Int) = launchFragment(GameFragment.newInstance(diff))
+    override fun showResultFragment(diff: Int, res: Boolean) =
+        launchFragment(ResultFragment.newInstance(diff, res))
 
     // Запуск нужного фрагмента:
     private fun launchFragment(fragment: Fragment) {

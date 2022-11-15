@@ -25,4 +25,12 @@
     <style name="CustomImageButton" parent="Theme.Sudoku">
         <item name="android:tint">@color/grey</item>
     </style>
+
+    <style name="CustomImageButtonAccept" parent="Theme.Sudoku">
+        <item name="android:tint">@color/lightBlack</item>
+    </style>
+
+    <style name="CustomImageView" parent="Theme.Sudoku">
+        <item name="android:tint">@color/grey</item>
+    </style>
 </resources>

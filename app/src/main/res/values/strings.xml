@@ -7,6 +7,18 @@
     <string name="titleToolbarHistory">История</string>
     <string name="titleToolbarGame">Игра</string>
     <string name="titleToolbarStatistic">Статистика</string>
-
+    <string name="titleToolbarResult">Результат</string>
     <string name="buttonStartNewGame">Новая игра</string>
+
+    <string name="difficultEasy">Легкая</string>
+    <string name="difficultMiddle">Средняя</string>
+    <string name="difficultHard">Сложная</string>
+    <string name="difficultExpert">Экспертная</string>
+
+    <string name="titleWinResult">Победа!</string>
+    <string name="titleLostResult">Поражение!</string>
+    <string name="titleDifficult">Уровень сложности:</string>
+    <string name="titleMistakes">Количество ошибок:</string>
+    <string name="titleTime">Время:</string>
+    <string name="titlePoints">Набранные очки:</string>
 </resources>

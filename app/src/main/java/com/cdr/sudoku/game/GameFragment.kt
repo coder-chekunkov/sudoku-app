@@ -9,6 +9,7 @@ import com.cdr.sudoku.R
 import com.cdr.sudoku.contract.HasCustomIcon
 import com.cdr.sudoku.contract.HasCustomTitle
 import com.cdr.sudoku.contract.IsGameButtonClickable
+import com.cdr.sudoku.contract.navigator
 import com.cdr.sudoku.databinding.FragmentGameBinding
 import kotlin.properties.Delegates
 
@@ -31,6 +32,20 @@ class GameFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButtonClic
 
         binding.textView.text = difficult.toString()
 
+        // Запуск emojiRain:
+        binding.winButton.setOnClickListener {
+            navigator().showResultFragment(
+                difficult,
+                RESULT_WIN
+            )
+        }
+        binding.lostButton.setOnClickListener {
+            navigator().showResultFragment(
+                difficult,
+                RESULT_LOST
+            )
+        }
+
         return binding.root
     }
 
@@ -43,6 +58,12 @@ class GameFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButtonClic
         private val KEY_ARG_DIFFICULT = "ARG_DIFFICULT"
 
         @JvmStatic
+        val RESULT_WIN = true
+
+        @JvmStatic
+        val RESULT_LOST = false
+
+        @JvmStatic
         fun newInstance(newDifficult: Int): Fragment {
             val bundle = Bundle()
             bundle.putInt(KEY_ARG_DIFFICULT, newDifficult)
@@ -52,6 +73,4 @@ class GameFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButtonClic
             return fragment
         }
     }
-
-
 }

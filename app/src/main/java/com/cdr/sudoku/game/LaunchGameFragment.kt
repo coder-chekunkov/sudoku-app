@@ -82,7 +82,8 @@ class LaunchGameFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButt
             mapOf(TITLE_DIFFICULTY to "Сложность: Средняя", VALUE_DIFFICULTY to DIFFICULTY_MIDDLE),
             mapOf(TITLE_DIFFICULTY to "Сложность: Сложная", VALUE_DIFFICULTY to DIFFICULTY_HARD),
             mapOf(
-                TITLE_DIFFICULTY to "Сложность: Экспертная", VALUE_DIFFICULTY to DIFFICULTY_EXPERT
+                TITLE_DIFFICULTY to "Сложность: Экспертная",
+                VALUE_DIFFICULTY to DIFFICULTY_EXPERT
             )
         )
     }

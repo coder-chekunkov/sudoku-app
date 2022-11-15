@@ -17,7 +17,8 @@
         android:src="@drawable/ic_settings"
         android:theme="@style/CustomImageButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/titleToolbarGame" />
 
     <ImageButton
         android:id="@+id/historyLaunchGameButton"
@@ -29,7 +30,8 @@
         android:src="@drawable/ic_history"
         android:theme="@style/CustomImageButton"
         app:layout_constraintEnd_toStartOf="@id/statisticLaunchButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/titleToolbarGame"/>
 
     <ImageButton
         android:id="@+id/statisticLaunchButton"
@@ -42,7 +44,8 @@
         android:src="@drawable/ic_statistic"
         android:theme="@style/CustomImageButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/titleToolbarGame"/>
 
     <Spinner
         android:id="@+id/difficultySpinner"
