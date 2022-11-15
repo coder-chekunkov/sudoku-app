@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.cdr.sudoku.R
+import com.cdr.sudoku.contract.HasCustomIcon
 import com.cdr.sudoku.contract.HasCustomTitle
 import com.cdr.sudoku.databinding.FragmentStatisticBinding
 
-class StatisticFragment : Fragment(), HasCustomTitle {
+class StatisticFragment : Fragment(), HasCustomTitle, HasCustomIcon {
 
     private lateinit var binding: FragmentStatisticBinding
 
@@ -24,4 +25,5 @@ class StatisticFragment : Fragment(), HasCustomTitle {
     }
 
     override fun getResTitle(): Int = R.string.titleStatisticButton
+    override fun getResIcon(): Int = R.drawable.ic_statistic
 }

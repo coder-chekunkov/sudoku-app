@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.cdr.sudoku.contract.HasCustomIcon
 import com.cdr.sudoku.contract.HasCustomTitle
+import com.cdr.sudoku.contract.IsGameButtonClickable
 import com.cdr.sudoku.contract.Navigator
 import com.cdr.sudoku.databinding.ActivityMainBinding
 import com.cdr.sudoku.game.GameFragment
+import com.cdr.sudoku.game.LaunchGameFragment
 import com.cdr.sudoku.history.HistoryFragment
 import com.cdr.sudoku.statistic.StatisticFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity(), Navigator {
         ) {
             super.onFragmentViewCreated(fm, f, v, savedInstanceState)
             renderToolbar()
+            setClickableGameButton()
         }
     }
 
@@ -43,7 +47,7 @@ class MainActivity : AppCompatActivity(), Navigator {
                         true
                     }
                     R.id.gameButton -> {
-                        showGameFragment()
+                        showLaunchGameFragment()
                         true
                     }
                     R.id.statisticButton -> {
@@ -57,8 +61,8 @@ class MainActivity : AppCompatActivity(), Navigator {
 
         // Запуск GameFragment при первом запуске:
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, GameFragment())
-                .commit()
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragmentContainer, LaunchGameFragment()).commit()
         }
     }
 
@@ -68,8 +72,9 @@ class MainActivity : AppCompatActivity(), Navigator {
     }
 
     override fun showHistoryFragment() = launchFragment(HistoryFragment())
-    override fun showGameFragment() = launchFragment(GameFragment())
+    override fun showLaunchGameFragment() = launchFragment(LaunchGameFragment())
     override fun showStatisticFragment() = launchFragment(StatisticFragment())
+    override fun showGameFragment(diff: Int) = launchFragment(GameFragment.newInstance(diff))
 
     // Запуск нужного фрагмента:
     private fun launchFragment(fragment: Fragment) {
@@ -80,7 +85,17 @@ class MainActivity : AppCompatActivity(), Navigator {
     private fun renderToolbar() {
         val fragment = currentFragment
 
-        if (fragment is HasCustomTitle) supportActionBar?.title = getString(fragment.getResTitle())
-        else supportActionBar?.title = getString(R.string.app_name)
+        supportActionBar?.title =
+            if (fragment is HasCustomTitle) getString(fragment.getResTitle()) else getString(R.string.app_name)
+
+        if (fragment is HasCustomIcon) supportActionBar?.setIcon(fragment.getResIcon())
+    }
+
+    // "Разрешение" нажатия на кнопку игры (запрещенно, если уже запущена игра):
+    private fun setClickableGameButton() {
+        val fragment = currentFragment
+
+        binding.bottomNavigation.menu.findItem(R.id.gameButton).isEnabled =
+            if (fragment is IsGameButtonClickable) fragment.isGameButtonClickable() else true
     }
 }

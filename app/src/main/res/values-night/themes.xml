@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Sudoku" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -18,4 +18,11 @@
         <item name="android:background">@color/blue</item>
     </style>
 
+    <style name="CustomConstraintLayout" parent="Theme.Sudoku">
+        <item name="android:background">@color/lightBlack</item>
+    </style>
+
+    <style name="CustomImageButton" parent="Theme.Sudoku">
+        <item name="android:tint">@color/grey</item>
+    </style>
 </resources>

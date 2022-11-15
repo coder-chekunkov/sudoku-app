@@ -7,4 +7,6 @@
     <string name="titleToolbarHistory">История</string>
     <string name="titleToolbarGame">Игра</string>
     <string name="titleToolbarStatistic">Статистика</string>
+
+    <string name="buttonStartNewGame">Новая игра</string>
 </resources>
