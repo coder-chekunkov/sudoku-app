@@ -13,6 +13,7 @@ import com.cdr.sudoku.contract.HasCustomTitle
 import com.cdr.sudoku.contract.IsGameButtonClickable
 import com.cdr.sudoku.contract.navigator
 import com.cdr.sudoku.databinding.FragmentLaunchGameBinding
+import com.cdr.sudoku.model.FactCreator
 
 class LaunchGameFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButtonClickable {
 
@@ -26,7 +27,9 @@ class LaunchGameFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButt
 
         createDifficultySpinner()
         with(binding) {
-            startNewGameButton.setOnClickListener { clickStartNewGameButton() }
+            binding.factTextView.text = FactCreator().createFact(requireContext()) // Факт о судоку
+            startNewGameButton.setOnClickListener { clickStartNewGameButton() } // Новая игра
+            infoLaunchGameButton.setOnClickListener { clickInfoButton() } // Информация
         }
 
         return binding.root
@@ -41,7 +44,7 @@ class LaunchGameFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButt
             arrayOf(TITLE_DIFFICULTY),
             intArrayOf(android.R.id.text1)
         )
-        binding.difficultySpinner.onItemSelectedListener =
+        binding.difficultySpinner.onItemSelectedListener = // Нажатие на выбранную сложность
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     difficult = difficultyCases[p2][VALUE_DIFFICULTY] as Int
@@ -52,6 +55,7 @@ class LaunchGameFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButt
     }
 
     private fun clickStartNewGameButton() = navigator().showGameFragment(difficult) // Новая игра
+    private fun clickInfoButton() = navigator().showInfoSettings() // Информация
 
     override fun getResTitle(): Int = R.string.titleToolbarGame
     override fun getResIcon(): Int = R.drawable.ic_game

@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.cdr.sudoku.contract.HasCustomIcon
-import com.cdr.sudoku.contract.HasCustomTitle
-import com.cdr.sudoku.contract.IsGameButtonClickable
-import com.cdr.sudoku.contract.Navigator
+import com.cdr.sudoku.contract.*
 import com.cdr.sudoku.databinding.ActivityMainBinding
 import com.cdr.sudoku.game.GameFragment
+import com.cdr.sudoku.game.InformationFragment
 import com.cdr.sudoku.game.LaunchGameFragment
 import com.cdr.sudoku.game.ResultFragment
 import com.cdr.sudoku.history.HistoryFragment
@@ -40,6 +38,8 @@ class MainActivity : AppCompatActivity(), Navigator {
         setSupportActionBar(binding.toolbar) // Инициализация Toolbar
         supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, false)
         bottomNavigationView = binding.bottomNavigation.also {
+            it.selectedItemId = R.id.statisticButton
+            it.selectedItemId = R.id.historyButton
             it.selectedItemId = R.id.gameButton
             it.setOnItemSelectedListener { item ->
                 when (item.itemId) {
@@ -72,9 +72,15 @@ class MainActivity : AppCompatActivity(), Navigator {
         supportFragmentManager.unregisterFragmentLifecycleCallbacks(fragmentLifecycleCallbacks)
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     override fun showHistoryFragment() = launchFragment(HistoryFragment())
     override fun showLaunchGameFragment() = launchFragment(LaunchGameFragment())
     override fun showStatisticFragment() = launchFragment(StatisticFragment())
+    override fun showInfoSettings() = launchFragment(InformationFragment())
     override fun showGameFragment(diff: Int) = launchFragment(GameFragment.newInstance(diff))
     override fun showResultFragment(diff: Int, res: Boolean) =
         launchFragment(ResultFragment.newInstance(diff, res))
@@ -88,8 +94,8 @@ class MainActivity : AppCompatActivity(), Navigator {
     private fun renderToolbar() {
         val fragment = currentFragment
 
-        supportActionBar?.title =
-            if (fragment is HasCustomTitle) getString(fragment.getResTitle()) else getString(R.string.app_name)
+        if (fragment is HasCustomTitle) supportActionBar?.title = getString(fragment.getResTitle())
+        else supportActionBar?.title = getString(R.string.app_name)
 
         if (fragment is HasCustomIcon) supportActionBar?.setIcon(fragment.getResIcon())
     }

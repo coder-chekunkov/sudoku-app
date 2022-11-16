@@ -8,6 +8,7 @@ interface Navigator {
     fun showStatisticFragment() // Fragment со статистикой
     fun showGameFragment(diff: Int) // Fragment с игрой
     fun showResultFragment(diff: Int, res: Boolean) // Fragment с результатом игры
+    fun showInfoSettings() // Fragment с информацией
 }
 
 fun Fragment.navigator(): Navigator = requireActivity() as Navigator
