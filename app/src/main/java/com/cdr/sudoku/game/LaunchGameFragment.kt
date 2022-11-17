@@ -1,6 +1,7 @@
 package com.cdr.sudoku.game
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,14 @@ class LaunchGameFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButt
 
     private lateinit var binding: FragmentLaunchGameBinding
     private var difficult = DIFFICULTY_EASY
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val inflater = TransitionInflater.from(requireContext())
+        exitTransition = inflater.inflateTransition(R.transition.fade)
+        enterTransition = inflater.inflateTransition(R.transition.slide_bottom)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

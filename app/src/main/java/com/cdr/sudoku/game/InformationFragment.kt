@@ -1,6 +1,7 @@
 package com.cdr.sudoku.game
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +13,18 @@ import com.cdr.sudoku.contract.IsGameButtonClickable
 import com.cdr.sudoku.contract.navigator
 import com.cdr.sudoku.databinding.FragmentInformationBinding
 
+
 class InformationFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButtonClickable {
 
     private lateinit var binding: FragmentInformationBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val inflater = TransitionInflater.from(requireContext())
+        exitTransition = inflater.inflateTransition(R.transition.fade)
+        enterTransition = inflater.inflateTransition(R.transition.slide_top)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +36,7 @@ class InformationFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameBut
 
         return binding.root
     }
+
 
     private fun clickOkButton() = navigator().showLaunchGameFragment() // Запуск игры
 

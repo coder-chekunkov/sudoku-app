@@ -13,6 +13,11 @@
     <string name="buttonStartNewGame">Новая игра</string>
     <string name="buttonOk">Понятно</string>
 
+    <string name="textInfo1">В начале игры некоторые ячейки судоку заполнены цифрами.</string>
+    <string name="textInfo2">Головоломка считается решенной, если все пустые ячейки заполнены цифрами от 1 до 9.</string>
+    <string name="textInfo3">Цифры не должны повторятся ни в одной из 9 <b>строк</b>, <b>столбцов</b> и <b>блоков</b>.</string>
+    <string name="textInfo4">Изучите игровое поле и найдите цифры, которые подойдут для пустых ячеек.</string>
+
     <string name="difficultEasy">Легкая</string>
     <string name="difficultMiddle">Средняя</string>
     <string name="difficultHard">Сложная</string>

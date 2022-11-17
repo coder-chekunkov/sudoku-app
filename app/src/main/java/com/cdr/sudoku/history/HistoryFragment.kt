@@ -1,6 +1,7 @@
 package com.cdr.sudoku.history
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,14 @@ import com.cdr.sudoku.databinding.FragmentHistoryBinding
 class HistoryFragment : Fragment(), HasCustomTitle, HasCustomIcon {
 
     private lateinit var binding: FragmentHistoryBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val inflater = TransitionInflater.from(requireContext())
+        exitTransition = inflater.inflateTransition(R.transition.fade)
+        enterTransition = inflater.inflateTransition(R.transition.slide_left)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
