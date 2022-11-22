@@ -29,6 +29,9 @@
     <string name="titleMistakes">Количество ошибок:</string>
     <string name="titleTime">Время:</string>
     <string name="titlePoints">Набранные очки:</string>
+    
+    <string name="textHelpButton">Подсказка</string>
+    <string name="textDeleteButton">Стереть</string>
     <string name="numberOne">1</string>
     <string name="numberTwo">2</string>
     <string name="numberThree">3</string>

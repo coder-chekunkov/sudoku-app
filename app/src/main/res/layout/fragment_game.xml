@@ -195,7 +195,32 @@
             android:contentDescription="@string/titleGameButton"
             android:text="@string/numberNine"
             android:textSize="20sp" />
-
     </GridLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:minWidth="140dp"
+        android:text="@string/textDeleteButton"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@id/helpButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gridButtons"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/helpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:minWidth="140dp"
+        android:text="@string/textHelpButton"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/deleteButton"
+        app:layout_constraintTop_toBottomOf="@id/gridButtons"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
