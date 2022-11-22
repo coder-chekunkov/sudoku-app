@@ -12,6 +12,12 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="SudokuBoardStyle">@style/DefaultSudokuBoardStyle</item>
+    </style>
+
+    <style name="DefaultSudokuBoardStyle">
+        <item name="linesColor">@color/black</item>
     </style>
 
     <style name="CustomToolbar" parent="Theme.Sudoku">

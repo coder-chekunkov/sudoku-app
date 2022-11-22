@@ -1,5 +1,6 @@
 package com.cdr.sudoku.game
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.cdr.sudoku.contract.HasCustomTitle
 import com.cdr.sudoku.contract.IsGameButtonClickable
 import com.cdr.sudoku.contract.navigator
 import com.cdr.sudoku.databinding.FragmentResultBinding
+import java.util.*
 import kotlin.properties.Delegates
 
 class ResultFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButtonClickable {
@@ -18,12 +20,18 @@ class ResultFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButtonCl
     private lateinit var binding: FragmentResultBinding
     private var result by Delegates.notNull<Boolean>()
     private var difficult by Delegates.notNull<Int>()
+    private var mistakes by Delegates.notNull<Int>()
+    private var points by Delegates.notNull<Int>()
+    private var time by Delegates.notNull<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         result = arguments?.getBoolean(KEY_ARG_RESULT) ?: GameFragment.RESULT_LOST
         difficult = arguments?.getInt(KEY_ARG_DIFFICULT) ?: LaunchGameFragment.DIFFICULTY_EASY
+        mistakes = arguments?.getInt(KEY_ARG_MISTAKES) ?: 0
+        points = arguments?.getInt(KEY_ARG_POINTS) ?: 0
+        time = arguments?.getInt(KEY_ARG_TIME) ?: 0
     }
 
     override fun onCreateView(
@@ -42,6 +50,7 @@ class ResultFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButtonCl
         startEmojiRain()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun renderUI() {
         with(binding) {
             if (result) {
@@ -53,6 +62,9 @@ class ResultFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButtonCl
             }
 
             difficultTextView.text = createDifficultString()
+            mistakesTextView.text = "$mistakes/3"
+            pointsTextView.text = points.toString()
+            timeTextView.text = createTimeString()
         }
     }
 
@@ -88,6 +100,12 @@ class ResultFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButtonCl
         else -> "Error"
     }
 
+    private fun createTimeString(): String {
+        val minutes: Int = (time % 3600) / 60
+        val secs: Int = time % 60
+        return String.format(Locale.getDefault(), "%02d:%02d", minutes, secs)
+    }
+
     companion object {
         @JvmStatic
         private val KEY_ARG_RESULT = "ARG_RESULT"
@@ -96,10 +114,24 @@ class ResultFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButtonCl
         private val KEY_ARG_DIFFICULT = "ARG_DIFFICULT"
 
         @JvmStatic
-        fun newInstance(newDifficult: Int, newResult: Boolean): Fragment {
+        private val KEY_ARG_MISTAKES = "ARG_MISTAKES"
+
+        @JvmStatic
+        private val KEY_ARG_POINTS = "ARG_POINTS"
+
+        @JvmStatic
+        private val KEY_ARG_TIME = "ARG_TIME"
+
+        @JvmStatic
+        fun newInstance(
+            newDiff: Int, newMistakes: Int, newPoints: Int, newTime: Int, newRes: Boolean
+        ): Fragment {
             val bundle = Bundle()
-            bundle.putBoolean(KEY_ARG_RESULT, newResult)
-            bundle.putInt(KEY_ARG_DIFFICULT, newDifficult)
+            bundle.putBoolean(KEY_ARG_RESULT, newRes)
+            bundle.putInt(KEY_ARG_MISTAKES, newMistakes)
+            bundle.putInt(KEY_ARG_POINTS, newPoints)
+            bundle.putInt(KEY_ARG_DIFFICULT, newDiff)
+            bundle.putInt(KEY_ARG_TIME, newTime)
 
             val fragment = ResultFragment()
             fragment.arguments = bundle

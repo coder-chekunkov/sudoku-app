@@ -29,4 +29,13 @@
     <string name="titleMistakes">Количество ошибок:</string>
     <string name="titleTime">Время:</string>
     <string name="titlePoints">Набранные очки:</string>
+    <string name="numberOne">1</string>
+    <string name="numberTwo">2</string>
+    <string name="numberThree">3</string>
+    <string name="numberFour">4</string>
+    <string name="numberFive">5</string>
+    <string name="numberSix">6</string>
+    <string name="numberSeven">7</string>
+    <string name="numberEight">8</string>
+    <string name="numberNine">9</string>
 </resources>

@@ -82,8 +82,8 @@ class MainActivity : AppCompatActivity(), Navigator {
     override fun showStatisticFragment() = launchFragment(StatisticFragment())
     override fun showInfoSettings() = launchFragment(InformationFragment())
     override fun showGameFragment(diff: Int) = launchFragment(GameFragment.newInstance(diff))
-    override fun showResultFragment(diff: Int, res: Boolean) =
-        launchFragment(ResultFragment.newInstance(diff, res))
+    override fun showResultFragment(diff: Int, mis: Int, points: Int, time: Int, res: Boolean) =
+        launchFragment(ResultFragment.newInstance(diff, mis, points, time, res))
 
     // Запуск нужного фрагмента:
     private fun launchFragment(fragment: Fragment) {
