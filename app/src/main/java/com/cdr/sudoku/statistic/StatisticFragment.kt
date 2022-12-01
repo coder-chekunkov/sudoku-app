@@ -64,7 +64,7 @@ class StatisticFragment : Fragment(), View.OnClickListener, HasCustomTitle, HasC
     }
 
     private fun renderContent() {
-        binding.test.text = currentDifficult.toString()
+
     }
 
     override fun getResTitle(): Int = R.string.titleStatisticButton

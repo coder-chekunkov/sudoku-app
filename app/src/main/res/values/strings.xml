@@ -41,4 +41,16 @@
     <string name="numberSeven">7</string>
     <string name="numberEight">8</string>
     <string name="numberNine">9</string>
+
+    <string name="titleGames">Игры</string>
+    <string name="titleAllGames">Количество игр</string>
+    <string name="titleWinGames">Выигранных игр</string>
+    <string name="titleLostGames">Проигранных игр</string>
+    <string name="titleWithoutMistakesGames">Побед без ошибок</string>
+    <string name="titleTimes">Время</string>
+    <string name="titleBestTime">Лучшее время</string>
+    <string name="titleAverageTime">Среднее время</string>
+    <string name="titlePoint">Счёт</string>
+    <string name="titleBestPoints">Лучший счёт</string>
+    <string name="titleAveragePoints">Средний счёт</string>
 </resources>

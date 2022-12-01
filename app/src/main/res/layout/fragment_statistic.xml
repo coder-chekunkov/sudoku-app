@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/CustomConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="10dp"
+    android:orientation="vertical"
+    android:paddingStart="8dp"
     android:paddingTop="8dp"
-    android:paddingEnd="10dp">
+    android:paddingEnd="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonsDifficult"
@@ -85,16 +86,260 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonsDifficult" />
 
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view"
-        tools:text="1" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="12dp"
+            android:paddingEnd="12sp">
+
+            <TextView
+                android:id="@+id/titleGames"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/titleGames"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/titleAllGames"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:drawablePadding="8dp"
+                android:text="@string/titleAllGames"
+                android:textSize="16sp"
+                app:drawableLeftCompat="@drawable/ic_game_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleGames" />
+
+            <TextView
+                android:id="@+id/allGamesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@id/titleAllGames"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="150" />
+
+            <TextView
+                android:id="@+id/titleWinGames"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="8dp"
+                android:text="@string/titleWinGames"
+                android:textSize="16sp"
+                app:drawableLeftCompat="@drawable/ic_win_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleAllGames" />
+
+            <TextView
+                android:id="@+id/allWinGamesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@id/titleWinGames"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="75" />
+
+            <TextView
+                android:id="@+id/titleLostGames"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="8dp"
+                android:text="@string/titleLostGames"
+                android:textSize="16sp"
+                app:drawableLeftCompat="@drawable/ic_lost_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleWinGames" />
+
+            <TextView
+                android:id="@+id/lostGamesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@id/titleLostGames"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="75" />
+
+            <TextView
+                android:id="@+id/titleWithoutMistakesGames"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="8dp"
+                android:text="@string/titleWithoutMistakesGames"
+                android:textSize="16sp"
+                app:drawableLeftCompat="@drawable/ic_flag_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleLostGames" />
+
+            <TextView
+                android:id="@+id/withoutMistakesGamesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@id/titleWithoutMistakesGames"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="75" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrierGames"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="titleWithoutMistakesGames, titleLostGames, titleWinGames, titleAllGames"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/titleTimes"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/titleTimes"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrierGames" />
+
+            <TextView
+                android:id="@+id/titleBestTime"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:drawablePadding="8dp"
+                android:text="@string/titleBestTime"
+                android:textSize="16sp"
+                app:drawableLeftCompat="@drawable/ic_clock_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleTimes" />
+
+            <TextView
+                android:id="@+id/bestTimeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@id/titleBestTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="01:30" />
+
+            <TextView
+                android:id="@+id/titleAverageTime"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="8dp"
+                android:text="@string/titleAverageTime"
+                android:textSize="16sp"
+                app:drawableLeftCompat="@drawable/ic_time_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleBestTime" />
+
+            <TextView
+                android:id="@+id/averageTimeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@id/titleAverageTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="02:40" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrierTimes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="titleBestTime, titleAverageTime"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/titlePoints"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/titlePoint"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrierTimes" />
+
+            <TextView
+                android:id="@+id/titleBestPoints"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:drawablePadding="8dp"
+                android:text="@string/titleBestPoints"
+                android:textSize="16sp"
+                app:drawableLeftCompat="@drawable/ic_star_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titlePoints" />
+
+            <TextView
+                android:id="@+id/bestPointsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@id/titleBestPoints"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="2500" />
+
+            <TextView
+                android:id="@+id/titleAveragePoints"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="8dp"
+                android:text="@string/titleAveragePoints"
+                android:textSize="16sp"
+                app:drawableLeftCompat="@drawable/ic_start_half_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleBestPoints" />
+
+            <TextView
+                android:id="@+id/averagePointsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@id/titleAveragePoints"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="1400" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>
