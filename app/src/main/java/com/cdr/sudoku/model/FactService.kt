@@ -8,7 +8,7 @@ import java.io.InputStream
 import java.io.InputStreamReader
 import kotlin.random.Random
 
-class FactCreator {
+class FactService {
 
     fun createFact(context: Context): String {
         val jsonText = readText(context, R.raw.facts) // Получение значений из файла

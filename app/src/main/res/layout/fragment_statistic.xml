@@ -147,7 +147,7 @@
                 app:layout_constraintTop_toBottomOf="@id/titleAllGames" />
 
             <TextView
-                android:id="@+id/allWinGamesTextView"
+                android:id="@+id/winGamesTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"

@@ -14,7 +14,7 @@ import com.cdr.sudoku.contract.HasCustomTitle
 import com.cdr.sudoku.contract.IsGameButtonClickable
 import com.cdr.sudoku.contract.navigator
 import com.cdr.sudoku.databinding.FragmentLaunchGameBinding
-import com.cdr.sudoku.model.FactCreator
+import com.cdr.sudoku.model.FactService
 
 class LaunchGameFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButtonClickable {
 
@@ -36,7 +36,7 @@ class LaunchGameFragment : Fragment(), HasCustomTitle, HasCustomIcon, IsGameButt
 
         createDifficultySpinner()
         with(binding) {
-            binding.factTextView.text = FactCreator().createFact(requireContext()) // Факт о судоку
+            binding.factTextView.text = FactService().createFact(requireContext()) // Факт о судоку
             startNewGameButton.setOnClickListener { clickStartNewGameButton() } // Новая игра
             infoLaunchGameButton.setOnClickListener { clickInfoButton() } // Информация
         }

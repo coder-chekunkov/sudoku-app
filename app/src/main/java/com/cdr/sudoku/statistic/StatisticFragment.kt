@@ -13,6 +13,7 @@ import com.cdr.sudoku.R
 import com.cdr.sudoku.contract.HasCustomIcon
 import com.cdr.sudoku.contract.HasCustomTitle
 import com.cdr.sudoku.databinding.FragmentStatisticBinding
+import com.cdr.sudoku.model.StatisticService
 
 class StatisticFragment : Fragment(), View.OnClickListener, HasCustomTitle, HasCustomIcon {
 
@@ -64,7 +65,18 @@ class StatisticFragment : Fragment(), View.OnClickListener, HasCustomTitle, HasC
     }
 
     private fun renderContent() {
+        val statistic = StatisticService(requireContext(), currentDifficult).getStatisticInfo()
 
+        with(binding) {
+            allGamesTextView.text = statistic.allGames.toString()
+            winGamesTextView.text = statistic.winGames.toString()
+            lostGamesTextView.text = statistic.lostGames.toString()
+            withoutMistakesGamesTextView.text = statistic.withoutMistakesGames.toString()
+            bestTimeTextView.text = statistic.bestTime
+            averageTimeTextView.text = statistic.averageTime
+            bestPointsTextView.text = statistic.bestPoints.toString()
+            averagePointsTextView.text = statistic.averagePoints.toString()
+        }
     }
 
     override fun getResTitle(): Int = R.string.titleStatisticButton
