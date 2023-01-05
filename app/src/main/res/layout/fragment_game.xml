@@ -54,7 +54,7 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="difficultTextView" />
 
-    <com.cdr.sudoku.game.field.SudokuBoardView
+    <com.cdr.app.screens.game.customField.SudokuBoardView
         android:id="@+id/sudokuBoardView"
         android:layout_width="match_parent"
         android:layout_height="500dp"
