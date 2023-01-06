@@ -35,7 +35,7 @@
     <string name="titleMistakes">Количество ошибок:</string>
     <string name="titleTime">Время:</string>
     <string name="titlePoints">Набранные очки:</string>
-    
+
     <string name="textHelpButton">Подсказка</string>
     <string name="textDeleteButton">Стереть</string>
     <string name="numberOne">1</string>
@@ -59,4 +59,9 @@
     <string name="titlePoint">Счёт</string>
     <string name="titleBestPoints">Лучший счёт</string>
     <string name="titleAveragePoints">Средний счёт</string>
+
+    <string name="dialogTitle">Выйти из игры?</string>
+    <string name="dialogMessage">Вы уверены, что хотите выйти? Весь сохраненный процесс будет потерян.</string>
+    <string name="dialogButtonYes">Да</string>
+    <string name="dialogButtonNo">Нет</string>
 </resources>
