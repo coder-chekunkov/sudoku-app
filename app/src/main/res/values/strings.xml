@@ -64,4 +64,7 @@
     <string name="dialogMessage">Вы уверены, что хотите выйти? Весь сохраненный процесс будет потерян.</string>
     <string name="dialogButtonYes">Да</string>
     <string name="dialogButtonNo">Нет</string>
+
+    <string name="textActionRemove">Очистить историю</string>
+    <string name="textStatusHistory">Статус:</string>
 </resources>

@@ -2,17 +2,14 @@ package com.cdr.app.screens.statistic
 
 import android.os.Bundle
 import android.view.View
-import com.cdr.core.views.BaseFragment
-import com.cdr.core.views.BaseScreen
-import com.cdr.core.views.BaseViewModel
-import com.cdr.core.views.HasCustomTitle
+import com.cdr.core.views.*
 import com.cdr.sudoku.R
 import com.cdr.sudoku.databinding.FragmentStatisticBinding
 
-class StatisticFragment : BaseFragment(R.layout.fragment_statistic), HasCustomTitle {
+class StatisticFragment : BaseFragment(R.layout.fragment_statistic), HasCustomTitle,
+    HasCustomAction {
 
-    override val viewModel: BaseViewModel
-        get() = TODO("Not yet implemented")
+    override val viewModel: StatisticViewModel by screenViewModel()
     private lateinit var binding: FragmentStatisticBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -21,5 +18,11 @@ class StatisticFragment : BaseFragment(R.layout.fragment_statistic), HasCustomTi
     }
 
     override fun getScreenTitle(): String = getString(R.string.titleToolbarStatistic)
+    override fun getCustomAction(): CustomAction = CustomAction(
+        iconRes = R.drawable.ic_remove,
+        textAction = getString(R.string.textActionRemove),
+        onCustomAction = { viewModel.clearHistoryAction() }
+    )
+
     class Screen : BaseScreen
 }
