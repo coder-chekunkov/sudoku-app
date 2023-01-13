@@ -15,7 +15,19 @@ interface UiActions {
     /**
      * Display a simple snackbar.
      */
-    fun showSnackbar(view: View, message: String, backgroundColor: Int)
+    fun showSnackbar(view: View, message: String, backgroundColor: Int, mainColor: Int)
+
+    /**
+     * Display a simple alert dialog.
+     */
+    fun showAlertDialog(
+        icon: Int,
+        title: String,
+        message: String,
+        positiveButtonText: String,
+        negativeButtonText: String,
+        positiveAction: Runnable
+    )
 
     /**
      * Get string resource.

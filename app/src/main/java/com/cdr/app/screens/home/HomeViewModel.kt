@@ -2,11 +2,12 @@ package com.cdr.app.screens.home
 
 import android.view.View
 import android.widget.AdapterView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.NavController
 import com.cdr.app.model.FactsService
-import com.cdr.app.screens.game.GameFragment
-import com.cdr.app.screens.information.InformationFragment
+import com.cdr.app.screens.root.FragmentRootDirections
 import com.cdr.core.navigator.Navigator
 import com.cdr.core.uiactions.UiActions
 import com.cdr.core.views.BaseViewModel
@@ -27,15 +28,33 @@ class HomeViewModel(
         _fact.value = factsService.getRandomFact()
     }
 
-    fun updateFact() { _fact.value = factsService.getRandomFact() }
-    fun showInfoScreen() = navigator.launch(InformationFragment.Screen())
-    fun showGameScreen() = navigator.launch(GameFragment.Screen(currentDifficulty), false)
+    fun updateFact() {
+        _fact.value = factsService.getRandomFact()
+    }
+
+    fun showInfoScreen(navController: NavController) {
+        val directions = HomeFragmentDirections.actionHomeFragmentToInformationFragment()
+        navigator.launchByNavController(navController, directions)
+    }
+
+    fun showGameScreen(fragment: Fragment) {
+        val directions = FragmentRootDirections.actionFragmentRootToGameFragment(currentDifficulty)
+        navigator.launchByTopNavController(fragment, directions)
+    }
 
     val onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
             currentDifficulty = difficultyCases[p2][VALUE_DIFFICULTY] as Int
-            if (p1 != null) uiActions.showSnackbar(p1, messageWithDifficulty(), R.color.darkBlue)
+            if (p1 != null) {
+                uiActions.showSnackbar(
+                    view = p1,
+                    message = messageWithDifficulty(),
+                    backgroundColor = R.color.darkBlue,
+                    mainColor = R.color.white
+                )
+            }
         }
+
         override fun onNothingSelected(p0: AdapterView<*>?) {}
     }
 
@@ -59,7 +78,10 @@ class HomeViewModel(
             mapOf(TITLE_DIFFICULTY to "Сложность: Лёгкая", VALUE_DIFFICULTY to DIFFICULTY_EASY),
             mapOf(TITLE_DIFFICULTY to "Сложность: Средняя", VALUE_DIFFICULTY to DIFFICULTY_MIDDLE),
             mapOf(TITLE_DIFFICULTY to "Сложность: Сложная", VALUE_DIFFICULTY to DIFFICULTY_HARD),
-            mapOf(TITLE_DIFFICULTY to "Сложность: Экспертная", VALUE_DIFFICULTY to DIFFICULTY_EXPERT)
+            mapOf(
+                TITLE_DIFFICULTY to "Сложность: Экспертная",
+                VALUE_DIFFICULTY to DIFFICULTY_EXPERT
+            )
         )
     }
 }

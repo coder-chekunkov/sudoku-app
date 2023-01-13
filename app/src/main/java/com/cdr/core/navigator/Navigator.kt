@@ -1,23 +1,31 @@
 package com.cdr.core.navigator
 
-import com.cdr.core.views.BaseScreen
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 
 /**
- * Navigation for your application
+ * Navigation for your application.
  */
 interface Navigator {
-    /**
-     * Launch a new screen at the top of back stack.
-     */
-    fun launch(screen: BaseScreen)
 
     /**
-     * Launch a new screen  without adding it at the top of back stack.
+     * Launch a new direction using a Navigation Controller.
      */
-    fun launch(screen: BaseScreen, addToBackStack: Boolean)
+    fun launchByNavController(navController: NavController, direction: NavDirections)
 
     /**
-     * Go back to the previous screen and optionally send some results.
+     * Launching a new direction using a Top Navigation Controller.
      */
-    fun goBack(result: Any? = null)
+    fun launchByTopNavController(fragment: Fragment, direction: NavDirections)
+
+    /**
+     * PopBackStack using a Navigation Controller.
+     */
+    fun popBackStackByNavController(navController: NavController)
+
+    /**
+     * PopBackStack using a Top Navigation Controller.
+     */
+    fun popBackStackByTopNavController(fragment: Fragment)
 }

@@ -1,6 +1,7 @@
 package com.cdr.core.views
 
 import androidx.fragment.app.Fragment
+import com.cdr.core.utils.internet.IsInternetConnection
 
 /**
  * Base class for all fragments
@@ -20,5 +21,5 @@ abstract class BaseFragment(layout: Int) : Fragment(layout) {
      * Call this method to get status of internet connection.
      */
     fun checkInternetConnection(): Boolean =
-        (requireActivity() as FragmentHolder).checkInternetConnection()
+        (requireActivity() as IsInternetConnection).checkInternetConnection()
 }

@@ -1,7 +1,9 @@
 package com.cdr.core.navigator
 
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import com.cdr.core.utils.ResourceActions
-import com.cdr.core.views.BaseScreen
 
 /**
  * Mediator that holds nav-actions in the queue if real navigator is not active.
@@ -11,35 +13,42 @@ class IntermediateNavigator : Navigator {
     private val targetNavigator = ResourceActions<Navigator>()
 
     /**
-     * Implementation of launching a new screen at the top of the back stack.
+     * Implementation of launching a new screen using a Navigation Controller.
      */
-    override fun launch(screen: BaseScreen) = targetNavigator {
-        it.launch(screen)
+    override fun launchByNavController(navController: NavController, direction: NavDirections) = targetNavigator {
+        it.launchByNavController(navController, direction)
     }
 
     /**
-     * Implementation of launching a new screen without adding it at the top of back stack.
+     * Implementation of launching a new direction using a Top Navigation Controller.
      */
-    override fun launch(screen: BaseScreen, addToBackStack: Boolean) = targetNavigator {
-        it.launch(screen, addToBackStack)
+    override fun launchByTopNavController(fragment: Fragment, direction: NavDirections) = targetNavigator {
+        it.launchByTopNavController(fragment, direction)
     }
 
     /**
-     * Implementation of Go back to the previous screen and optionally send some results.
+     * Implementation of PopBackStack using a Navigation Controller.
      */
-    override fun goBack(result: Any?) = targetNavigator {
-        it.goBack(result)
+    override fun popBackStackByNavController(navController: NavController) = targetNavigator {
+        it.popBackStackByNavController(navController)
     }
 
     /**
-     * Set navigator in target
+     * Implementation of PopBackStack using a Top Navigation Controller.
+     */
+    override fun popBackStackByTopNavController(fragment: Fragment) = targetNavigator {
+        it.popBackStackByTopNavController(fragment)
+    }
+
+    /**
+     * Set navigator in target.
      */
     fun setTarget(navigator: Navigator?) {
         targetNavigator.resource = navigator
     }
 
     /**
-     * Clean all navigation
+     * Clean all navigation.
      */
     fun cleared() {
         targetNavigator.clear()

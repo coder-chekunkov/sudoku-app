@@ -6,7 +6,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.cdr.core.BaseApplication
-import com.cdr.core.views.BaseScreen.Companion.ARG_SCREEN
 import java.lang.reflect.Constructor
 
 /**
@@ -16,6 +15,7 @@ class ViewModelFactory(
     private val dependencies: List<Any>, owner: SavedStateRegistryOwner
 ) : AbstractSavedStateViewModelFactory(owner, null) {
 
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(
         key: String, modelClass: Class<T>, handle: SavedStateHandle
     ): T {
@@ -50,7 +50,6 @@ class ViewModelFactory(
  */
 inline fun <reified VM : ViewModel> BaseFragment.screenViewModel() = viewModels<VM> {
     val application = requireActivity().application as BaseApplication
-    val screen = requireArguments().getSerializable(ARG_SCREEN) as BaseScreen
 
     val activityScopeViewModel = (requireActivity() as FragmentHolder).getActivityScopeViewModel()
 
@@ -58,7 +57,7 @@ inline fun <reified VM : ViewModel> BaseFragment.screenViewModel() = viewModels<
     // - singleton scope dependencies (repositories) -> from App class
     // - activity VM scope dependencies -> from ActivityScopeViewModel
     // - screen VM scope dependencies -> screen args
-    val dependencies = listOf(screen, activityScopeViewModel) + application.models
+    val dependencies = listOf(activityScopeViewModel) + application.models
 
     // creating factory
     ViewModelFactory(dependencies, this)

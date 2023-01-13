@@ -23,6 +23,4 @@ class StatisticFragment : BaseFragment(R.layout.fragment_statistic), HasCustomTi
         textAction = getString(R.string.textActionRemove),
         onCustomAction = { viewModel.clearHistoryAction() }
     )
-
-    class Screen : BaseScreen
 }

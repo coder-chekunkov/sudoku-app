@@ -22,6 +22,4 @@ class HistoryFragment : BaseFragment(R.layout.fragment_history), HasCustomTitle,
         textAction = getString(R.string.textActionRemove),
         onCustomAction = { viewModel.clearHistoryAction() }
     )
-
-    class Screen : BaseScreen
 }
