@@ -1,4 +1,4 @@
-package com.cdr.app.model
+package com.cdr.app.model.facts
 
 import android.content.Context
 import com.cdr.sudoku.R

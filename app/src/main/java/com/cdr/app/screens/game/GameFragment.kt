@@ -23,6 +23,8 @@ class GameFragment : BaseFragment(R.layout.fragment_game), HasCustomAction {
 
         with(binding) {
             difficultTextView.text = createDifficultLabel()
+
+            helpButton.setOnClickListener { viewModel.launchResultScreen(this@GameFragment) }
         }
     }
 
@@ -37,6 +39,6 @@ class GameFragment : BaseFragment(R.layout.fragment_game), HasCustomAction {
     override fun getCustomAction(): CustomAction = CustomAction(
         iconRes = R.drawable.ic_stop,
         textAction = getString(R.string.textStopGameButton),
-        onCustomAction = {viewModel.exitGame(this)}
+        onCustomAction = { viewModel.exitGame(this) }
     )
 }

@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
-import com.cdr.app.model.FactsService
+import com.cdr.app.model.facts.FactsService
 import com.cdr.app.screens.root.FragmentRootDirections
 import com.cdr.core.navigator.Navigator
 import com.cdr.core.uiactions.UiActions

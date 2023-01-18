@@ -12,6 +12,7 @@
     <string name="titleToolbarStartGame">Начать игру</string>
     <string name="titleToolbarInformation">Информация</string>
     <string name="titleToolbarResult">Результат</string>
+    <string name="titleToolbarGameOver">Конец игры</string>
     <string name="buttonStartNewGame">Новая игра</string>
     <string name="buttonOk">Понятно</string>
 

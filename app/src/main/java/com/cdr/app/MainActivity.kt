@@ -77,5 +77,5 @@ class MainActivity : AppCompatActivity(), FragmentHolder {
     }
 
     private fun createTopLevelDestinations(): List<Int> =
-        listOf(R.id.fragmentRoot, R.id.gameFragment)
+        listOf(R.id.fragmentRoot, R.id.gameFragment, R.id.resultFragment)
 }

@@ -8,6 +8,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/composeView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +19,8 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="250dp">
+        android:layout_marginBottom="250dp"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/resultTextView"
@@ -129,6 +134,7 @@
         android:layout_marginBottom="100dp"
         android:background="@drawable/background_shapes"
         android:contentDescription="@string/titleToolbarResult"
-        android:src="@drawable/ic_accept" />
+        android:src="@drawable/ic_accept"
+        android:visibility="gone" />
 
 </com.luolc.emojirain.EmojiRainLayout>
