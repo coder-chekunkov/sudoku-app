@@ -15,6 +15,7 @@
     <string name="titleToolbarGameOver">Конец игры</string>
     <string name="buttonStartNewGame">Новая игра</string>
     <string name="buttonOk">Понятно</string>
+    <string name="buttonUpdate">Обновить</string>
 
     <string name="textInfo1">В начале игры некоторые ячейки судоку заполнены цифрами.</string>
     <string name="textInfo2">Головоломка считается решенной, если все пустые ячейки заполнены цифрами от 1 до 9.</string>
@@ -70,4 +71,7 @@
 
     <string name="textActionRemove">Очистить историю</string>
     <string name="textStatusHistory">Статус:</string>
+
+    <string name="errorMessage">Произошла неизвестная ошибка!</string>
+    <string name="titleEmptyHistoryList">Данных об играх отсутсвуют!</string>
 </resources>

@@ -69,7 +69,8 @@ class MainActivity : AppCompatActivity(), FragmentHolder {
     override fun notifyScreenUpdates() = navigator.notifyScreenUpdates()
     override fun getActivityScopeViewModel(): ActivityScopeViewModel = viewModel
     override fun getApplicationDependencies(): List<Any> = listOf(
-        Dependencies.factService
+        Dependencies.factService,
+        Dependencies.statisticRepository
     )
 
     private fun createNavController(): NavController {

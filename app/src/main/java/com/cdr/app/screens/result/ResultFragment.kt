@@ -23,7 +23,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.fragment.navArgs
 import com.cdr.app.model.statistic.Statistic
-import com.cdr.app.screens.home.HomeViewModel
+import com.cdr.app.model.statistic.Statistic.Companion.WIN_RESULT_STATISTIC
+import com.cdr.app.screens.home.HomeViewModel.Companion.DIFFICULTY_EASY
+import com.cdr.app.screens.home.HomeViewModel.Companion.DIFFICULTY_EXPERT
+import com.cdr.app.screens.home.HomeViewModel.Companion.DIFFICULTY_HARD
+import com.cdr.app.screens.home.HomeViewModel.Companion.DIFFICULTY_MIDDLE
 import com.cdr.core.views.BaseFragment
 import com.cdr.core.views.HasCustomTitle
 import com.cdr.core.views.screenViewModel
@@ -64,7 +68,7 @@ class ResultFragment : BaseFragment(R.layout.fragment_result), HasCustomTitle {
                     .fillMaxSize()
                     .padding(start = 50.dp, top = 100.dp, end = 50.dp, bottom = 100.dp)
             ) {
-                CreateResultTitle(args.statisticArg.result)
+                CreateResultTitle(args.statisticArg.resultId)
                 CreateResultData(args.statisticArg)
                 CreateAcceptButton()
             }
@@ -72,10 +76,11 @@ class ResultFragment : BaseFragment(R.layout.fragment_result), HasCustomTitle {
     }
 
     @Composable
-    private fun CreateResultTitle(result: Boolean) {
+    private fun CreateResultTitle(result: Long) {
         val textResult =
-            if (result) getString(R.string.titleWinResult) else getString(R.string.titleLostResult)
-        val imageRes = if (result) R.drawable.ic_win else R.drawable.ic_lost
+            if (result == WIN_RESULT_STATISTIC) getString(R.string.titleWinResult) else getString(R.string.titleLostResult)
+        val imageRes =
+            if (result == WIN_RESULT_STATISTIC) R.drawable.ic_win else R.drawable.ic_lost
 
         val textColor =
             if (isSystemInDarkTheme()) colorResource(id = R.color.white) else colorResource(id = R.color.black)
@@ -101,6 +106,13 @@ class ResultFragment : BaseFragment(R.layout.fragment_result), HasCustomTitle {
     private fun CreateResultData(statistic: Statistic) {
         val textColor =
             if (isSystemInDarkTheme()) colorResource(id = R.color.white) else colorResource(id = R.color.black)
+        val difficultText = when (statistic.difficultId) {
+            DIFFICULTY_EASY.toLong() -> getString(R.string.difficultEasy)
+            DIFFICULTY_MIDDLE.toLong() -> getString(R.string.difficultMiddle)
+            DIFFICULTY_HARD.toLong() -> getString(R.string.difficultHard)
+            DIFFICULTY_EXPERT.toLong() -> getString(R.string.difficultExpert)
+            else -> getString(R.string.error)
+        }
 
         Column(modifier = Modifier.fillMaxWidth()) {
             Row(
@@ -117,7 +129,7 @@ class ResultFragment : BaseFragment(R.layout.fragment_result), HasCustomTitle {
                     color = textColor
                 )
                 Text(
-                    text = createDifficultLabel(statistic.difficult),
+                    text = difficultText,
                     style = MaterialTheme.typography.subtitle2,
                     modifier = Modifier.weight(1f),
                     textAlign = TextAlign.End,
@@ -177,7 +189,7 @@ class ResultFragment : BaseFragment(R.layout.fragment_result), HasCustomTitle {
                     color = textColor
                 )
                 Text(
-                    text = statistic.time,
+                    text = statistic.elapsedTime,
                     style = MaterialTheme.typography.subtitle2,
                     modifier = Modifier.weight(1f),
                     textAlign = TextAlign.End,
@@ -208,7 +220,7 @@ class ResultFragment : BaseFragment(R.layout.fragment_result), HasCustomTitle {
 
     private fun startEmojiRain() {
         with(binding.container) {
-            if (args.statisticArg.result) {
+            if (args.statisticArg.resultId == WIN_RESULT_STATISTIC) {
                 addEmoji(R.drawable.emoji_win_1)
                 addEmoji(R.drawable.emoji_win_2)
                 addEmoji(R.drawable.emoji_win_3)
@@ -225,14 +237,6 @@ class ResultFragment : BaseFragment(R.layout.fragment_result), HasCustomTitle {
 
             startDropping()
         }
-    }
-
-    private fun createDifficultLabel(difficult: Int): String = when (difficult) {
-        HomeViewModel.DIFFICULTY_EASY -> getString(R.string.difficultEasy)
-        HomeViewModel.DIFFICULTY_MIDDLE -> getString(R.string.difficultMiddle)
-        HomeViewModel.DIFFICULTY_HARD -> getString(R.string.difficultHard)
-        HomeViewModel.DIFFICULTY_EXPERT -> getString(R.string.difficultExpert)
-        else -> getString(R.string.error)
     }
 
     override fun getScreenTitle(): String = getString(R.string.titleToolbarGameOver)

@@ -5,9 +5,14 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Statistic(
-    val result: Boolean,
-    val difficult: Int,
-    val mistakes: Int,
-    val points: Int,
-    val time: String
-) : Parcelable
+    val resultId: Long,
+    val difficultId: Long,
+    val mistakes: Long,
+    val points: Long,
+    val elapsedTime: String
+) : Parcelable {
+
+    companion object {
+        const val WIN_RESULT_STATISTIC: Long = 1
+    }
+}
